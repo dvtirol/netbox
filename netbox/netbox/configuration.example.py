@@ -174,3 +174,6 @@ TIME_FORMAT = 'g:i a'
 SHORT_TIME_FORMAT = 'H:i:s'
 DATETIME_FORMAT = 'N j, Y g:i a'
 SHORT_DATETIME_FORMAT = 'Y-m-d H:i'
+
+# Webhooks SSL certificate bundle -- RedHat specific
+# REQUESTS_CA_BUNDLE = "/etc/pki/tls/certs/ca-bundle.crt"

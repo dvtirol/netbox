@@ -93,6 +93,7 @@ SHORT_TIME_FORMAT = getattr(configuration, 'SHORT_TIME_FORMAT', 'H:i:s')
 TIME_FORMAT = getattr(configuration, 'TIME_FORMAT', 'g:i a')
 TIME_ZONE = getattr(configuration, 'TIME_ZONE', 'UTC')
 WEBHOOKS_ENABLED = getattr(configuration, 'WEBHOOKS_ENABLED', False)
+REQUESTS_CA_BUNDLE = getattr(configuration, 'REQUESTS_CA_BUNDLE', True)
 
 
 #

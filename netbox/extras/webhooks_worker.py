@@ -8,6 +8,8 @@ from rest_framework.utils.encoders import JSONEncoder
 
 from extras.constants import WEBHOOK_CT_JSON, WEBHOOK_CT_X_WWW_FORM_ENCODED, OBJECTCHANGE_ACTION_CHOICES
 
+from django.conf import settings
+
 
 @job('default')
 def process_webhook(webhook, data, model_name, event, timestamp, username, request_id):
@@ -48,7 +50,7 @@ def process_webhook(webhook, data, model_name, event, timestamp, username, reque
         prepared_request.headers['X-Hook-Signature'] = hmac_prep.hexdigest()
 
     with requests.Session() as session:
-        session.verify = webhook.ssl_verification
+        session.verify = settings.REQUESTS_CA_BUNDLE if webhook.ssl_verification else False
         response = session.send(prepared_request)
 
     if response.status_code >= 200 and response.status_code <= 299:
